@@ -1,0 +1,36 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+
+
+
+    <!-- the user is already passed to the html so we dont have to pass it explicitly -->
+    {% if user.is_authenticated %}
+        <div class="container text-center my-5">
+            <h4> Logged in as <b>{{ user.username }}</b> </h4> 
+        </div>
+            <!-- we took post bcaz browser like chrome and others check for <a> link and load them so if user clicks any link it will load those link faster but if there is a log out link then it will load it and log you out and we dont want that so make it form -->
+            <!-- <form action="{% url 'logoutuser' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form> -->
+    {% else %}  
+            <!-- create a login form here  -->
+            <div class="row mx-auto">
+                <div class="col-12 col-md-12 col-lg-12 col-sm-12 col-xm-12">
+            <div class="continer text-center" style="margin-top: 11%; border: 1px solid lightgreen;">
+                <div style="border-bottom: green; margin-bottom: 10px; margin-left: 40px;" >
+                    <h2>Login</h2>
+                </div>
+            <form action="{% url 'loginuser' %}" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-success my-2" style="margin-left: 4%; ">login</button>
+            </form>   
+            <p style="font-weight: 500; margin-left: 4%;">new user? <a href="{% url 'signupuser' %}"> sign up </a> here</p>
+            </div> 
+            </div>
+            </div>  
+ {% endif %}
+
+
+{% endblock %} 

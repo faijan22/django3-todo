@@ -1,0 +1,36 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+ {% if todos %}
+ <div class="container text-center my-5 badge-warning p-2" >
+    <h4> Your Todo{{todos|pluralize}}</h4>
+</div>
+    <ul >
+        {% for todo in todos %}
+        <li style="font-size: large; ">
+            <a href="{% url 'viewtodo' todo.id %}" style="text-decoration: none;">
+            {% if todo.title %}
+                {% if todo.important %}
+                    <b>{{ todo.title }}</b>
+                    {% if todo.memo %} 
+                        - {{ todo.memo }}
+                    {% endif %}
+                {% else %}
+                    {{ todo.title }}
+                    {% if todo.memo %} 
+                        - {{ todo.memo }}
+                    {% endif %}
+                {% endif %} 
+            {% endif %} 
+            </a>
+        </li>
+        {% endfor %}
+    </ul> 
+ {% else %}
+    <div class="container text-center" style="margin-top: 20%;">
+        <h2>Seems like you dont have any todo today, lets <a href="{% url 'createtodo' %}" style="text-decoration: none;"> create</a> one.</h2>
+    </div>
+ {% endif %}
+
+{% endblock %}

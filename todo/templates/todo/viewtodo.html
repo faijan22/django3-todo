@@ -1,0 +1,29 @@
+{% extends 'todo/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <h6 style="color: red; ">{{ error }}</h6>
+    <!-- this will display the title of the blog  -->
+<div class="form-group">
+     
+
+<div class="container justify-content-around ml-auto ">
+    <form method="POST">
+        {% csrf_token %}
+        <!-- this will display the form with data in it  -->
+        {{ form|crispy}}
+        <button type="submit" class="btn btn-warning my-1">Submit</button>
+    </form>
+
+    <form method="POST" action="{% url 'comlpetetodo' todo.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary my-1">Completed</button>
+    </form>   
+
+    <form method="POST" action="{% url 'deletetodo' todo.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger my-1">Delete</button>
+    </form>
+</div>
+</div>
+{% endblock %} 

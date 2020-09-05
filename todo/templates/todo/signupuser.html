@@ -1,0 +1,18 @@
+{% extends 'todo/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container my-5 text-center bg-warning p-2">
+<h4>Sign Up</h4>
+</div>
+<div class="conatiner align-content-between " style=" margin-left: 50px;">
+<h2>{{ error }}</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success mx-5">Sign Up</button>
+</form>
+<div class="container text-left my-5"></div>
+<h6>Already a user <a href="{% url 'loginuser' %}">login</a> here.</h6>
+</div>
+ {% endblock %}

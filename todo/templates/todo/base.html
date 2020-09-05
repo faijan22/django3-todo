@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <title>Document</title>
+</head>
+<body >
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-check-circle" style="color: green;"></i>&nbsp;<b class="font-weight-bold">TO-DO</b></a>
+    {% if user.is_authenticated %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    {% endif %}
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+            <li class="nav-item active dropdown">
+              <a class="nav-link dropdown-toggle text-black font-weight-bold text-uppercase" href="" data-toggle="dropdown">Welcome {{ user.username }}</a>
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{% url 'logoutuser' %}">Logout</a>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link text-black font-weight-bold text-uppercase" href="{% url 'createtodo' %}" class="text-dark">Create </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link text-black font-weight-bold text-uppercase" href="{% url 'currenttodos' %}" class="text-dark">Current </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link text-black font-weight-bold text-uppercase" href="{% url 'completedtodos' %}" class="text-dark">Completed </a>
+            </li>
+          {% endif %}
+        </ul>
+    </div>
+</nav>
+
+  {% block content %}
+
+  {% endblock %}
+
+
+  <script src="https://kit.fontawesome.com/bb515f4036.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
