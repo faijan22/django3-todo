@@ -83,7 +83,7 @@ def loginuser(request):
         else:
             #if user mathes then 
             login(request, user) #login the user 
-            return redirect('currenttodos') #redirect the user to success page 
+            return redirect('home') #redirect the user to success page 
 
 @login_required            
 def logoutuser(request):
@@ -115,17 +115,18 @@ def createtodo(request):
 
 @login_required
 def comlpetetodo(request, todo_pk):
-        todo = get_object_or_404(Todo ,pk=todo_pk, user=request.user)
-        if request.method == 'POST':
-            todo.datecompleted = timezone.now()
-            todo.save()
-            return redirect('currenttodos')
+    todo = get_object_or_404(Todo ,pk=todo_pk, user=request.user)
+    if request.method == 'POST':
+        todo.datecompleted = timezone.now()
+        todo.save()
+    return redirect('currenttodos')
+
 @login_required
 def deletetodo(request, todo_pk):
-        todo = get_object_or_404(Todo ,pk=todo_pk, user=request.user)
-        if request.method == 'POST':
-            todo.delete()
-            return redirect('currenttodos')
+    todo = get_object_or_404(Todo ,pk=todo_pk, user=request.user)
+    if request.method == 'POST':
+        todo.delete()
+        return redirect('currenttodos')
 
 def completedtodos(request):
         todos =Todo.obejcts.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')

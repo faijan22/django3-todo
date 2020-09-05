@@ -1,5 +1,8 @@
 {% extends 'todo/base.html' %}
 
+{% block title %} Completed {% endblock %}
+
+
 {% block content %}
 
 <div class="container text-center my-5  bg-warning p-2 ">
@@ -8,14 +11,14 @@
 
 <ul>
     {% for todo in todos %}
-    <li style="font-weight: 500; text-transform: uppercase;">
+    <li style="font-weight: 500; text-transform:capitalize;">
         <a href="{% url 'viewtodo' todo.id %}" style="text-decoration: none;">
         
             {% if todo.important %}<b>{% endif %}{{ todo.title }}{% if todo.important %}</b>{% endif %} 
         
             {% if todo.memo %} - {{ todo.memo }} {% endif %}
         
-            - {{ todo.datecompleted|date:'M j Y H:i' }}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - {{ todo.datecompleted|date:'M j Y H:i' }}
     </a>
     </li>
     {% endfor %}

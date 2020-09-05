@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  <title>Document</title>
+  <title>{% block title %}{% endblock %}</title>
 </head>
 <body >
   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
@@ -22,7 +22,7 @@
             <li class="nav-item active dropdown">
               <a class="nav-link dropdown-toggle text-black font-weight-bold text-uppercase" href="" data-toggle="dropdown">Welcome {{ user.username }}</a>
               <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{% url 'logoutuser' %}">Logout</a>
+                  <a class="dropdown-item " href="{% url 'logoutuser' %}">Logout</a>
               </div>
             </li>
             <li class="nav-item active">
