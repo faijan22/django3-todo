@@ -16,12 +16,12 @@
                 {% if todo.important %}
                     <b>{{ todo.title }}</b>
                     {% if todo.memo %} 
-                        - {{ todo.memo }}
+                        - {{ todo.memo|truncatechars:50 }}
                     {% endif %}
                 {% else %}
                     {{ todo.title }}
                     {% if todo.memo %} 
-                        - {{ todo.memo }}
+                        - {{ todo.memo|truncatechars:50 }}
                     {% endif %}
                 {% endif %} 
             {% endif %} 

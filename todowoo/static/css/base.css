@@ -1,9 +1,0 @@
-body{
-    background: url(static/css/bg.jpg);
-    background-size: cover;
-}
-
-.title{
-    margin-top: 10px;
-    word-spacing: .2em;
-}
